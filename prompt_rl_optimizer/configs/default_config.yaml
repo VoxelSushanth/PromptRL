@@ -1,0 +1,125 @@
+# Default Experiment Configuration
+
+experiment_name: "prompt_optimization_run"
+task_description: "Math word problem solving with step-by-step reasoning"
+
+# Reward function weights
+reward:
+  correctness_weight: 0.4
+  format_compliance_weight: 0.2
+  completeness_weight: 0.25
+  conciseness_weight: 0.15
+  
+  # Penalties
+  length_penalty_threshold: 1000
+  length_penalty_factor: 0.001
+  repetition_penalty: 0.1
+  
+  # Normalization
+  use_z_score_normalization: true
+  running_window_size: 50
+
+# Prompt generator settings
+generator:
+  use_instruction_clarity: true
+  use_constraint_injection: true
+  use_output_structuring: true
+  use_task_decomposition: true
+  
+  # Variation parameters
+  mutation_rate: 0.3
+  crossover_rate: 0.2
+  temperature: 0.7
+
+# LLM execution settings
+execution:
+  provider: "openai"
+  model_name: "gpt-4o-mini"
+  api_key_env_var: "OPENAI_API_KEY"
+  
+  max_tokens: 1024
+  temperature: 0.7
+  top_p: 0.9
+  
+  # Rate limiting
+  requests_per_minute: 60
+  tokens_per_minute: 100000
+  
+  batch_size: 10
+  max_retries: 3
+
+# Evaluation settings
+evaluation:
+  method: "hybrid"  # rule_based, llm_judge, or hybrid
+  
+  # Rule-based evaluation
+  expected_format: null
+  required_keywords: []
+  forbidden_keywords: []
+  
+  # LLM-as-judge
+  judge_model: "gpt-4o-mini"
+  
+  # Thresholds
+  correctness_threshold: 0.7
+  format_compliance_threshold: 0.8
+
+# RL agent settings
+rl:
+  strategy: "epsilon_greedy"  # epsilon_greedy, ucb1, thompson_sampling, ppo_lite
+  
+  # Epsilon-greedy parameters
+  epsilon_start: 0.9
+  epsilon_end: 0.1
+  epsilon_decay: 0.995
+  
+  # UCB1 parameters
+  ucb_exploration_constant: 2.0
+  
+  # Thompson Sampling parameters
+  prior_alpha: 1.0
+  prior_beta: 1.0
+  
+  # PPO-lite parameters
+  ppo_clip_epsilon: 0.2
+  ppo_learning_rate: 0.001
+  ppo_entropy_coefficient: 0.01
+  
+  # Convergence
+  convergence_window: 10
+  convergence_threshold: 0.01
+  early_stopping_patience: 20
+  
+  # Population
+  population_size: 20
+  elite_size: 3
+
+# Storage settings
+storage:
+  storage_type: "sqlite"  # sqlite, json, memory
+  database_path: "data/prompt_optimizer.db"
+  log_directory: "logs"
+  
+  max_trials_to_keep: 10000
+  checkpoint_interval: 10
+  
+  random_seed: 42
+  save_all_prompts: true
+  save_all_outputs: true
+
+# Optimization loop
+num_iterations: 100
+candidates_per_iteration: 5
+
+# Baseline comparison
+use_baseline: true
+baseline_prompts:
+  - "Solve this problem."
+  - "Answer the following question."
+
+# Ablation studies
+run_ablation: true
+ablation_variants:
+  - "no_rl"
+  - "no_exploration"
+  - "uniform_weights"
