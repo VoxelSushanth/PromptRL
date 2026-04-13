@@ -2,7 +2,7 @@
 
 A research-grade system for automatically improving prompts using iterative feedback and reinforcement learning signals.
 
-## 📋 Table of Contents
+## Table of Contents
 
 1. [System Architecture](#system-architecture)
 2. [Installation](#installation)
@@ -12,7 +12,7 @@ A research-grade system for automatically improving prompts using iterative feed
 6. [Research Methodology](#research-methodology)
 7. [API Reference](#api-reference)
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -49,13 +49,13 @@ Data Flow:
 6. Loop continues until convergence or max iterations
 ```
 
-## 📦 Installation
+## Installation
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ```python
 from core.optimizer import PromptOptimizer
@@ -79,7 +79,7 @@ print(f"Best Reward: {results.best_reward}")
 print(f"Optimized Prompt: {best_prompt}")
 ```
 
-## 🧩 Component Design
+## Component Design
 
 ### 1. Prompt Generator
 - **Input**: Base prompt, historical performance data, exploration flag
@@ -101,7 +101,7 @@ print(f"Optimized Prompt: {best_prompt}")
 - **Strategy**: Balance exploration vs exploitation
 - **Convergence**: Track score progression, early stopping
 
-## 🧪 Experiment Framework
+## Experiment Framework
 
 The system includes pre-configured experiments to validate:
 - **Hypothesis**: RL-optimized prompts outperform manually engineered prompts
@@ -109,7 +109,7 @@ The system includes pre-configured experiments to validate:
 - **Baselines**: Human-written prompts, zero-shot, few-shot
 - **Ablation Studies**: Without RL, different reward weights, exploration strategies
 
-## 📊 Research Methodology
+## Research Methodology
 
 ### Hypothesis
 > "Iterative prompt optimization using reinforcement learning produces prompts that achieve statistically significant improvement over baseline human-engineered prompts."
@@ -123,6 +123,6 @@ The system includes pre-configured experiments to validate:
 - Effect size (Cohen's d)
 - Confidence intervals (95%)
 
-## 📝 License
+## License
 
 MIT License
